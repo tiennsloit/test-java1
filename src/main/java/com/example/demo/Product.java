@@ -15,16 +15,13 @@ public class Product {
     private String name;
     private Double price;
 
-    // Default constructor (required by JPA)
     public Product() {}
 
-    // Constructor
     public Product(String name, Double price) {
         this.name = name;
         this.price = price;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
