@@ -1,0 +1,56 @@
+# Server Configuration
+server:
+  port: 8080  # Internal HTTP port for Nginx reverse proxy
+  forward-headers-strategy: framework  # Trust X-Forwarded-* headers from Nginx
+
+# Spring Configuration
+spring:
+  # Application Name
+  application:
+    name: AccountingSystem
+
+  # Database Connection Configuration
+  datasource:
+    url: jdbc:postgresql://ezbook_dev_user:8lTAmIFaTwrmbLaYfmB4YdPWEEGa2Aqy@dpg-d3orn6u3jp1c739mlv1g-a.oregon-postgres.render.com/ezbook_dev
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 30000  # 30 seconds
+      idle-timeout: 600000       # 10 minutes
+      connection-test-query: SELECT 1
+
+  # JPA/Hibernate Configuration
+  jpa:
+    hibernate:
+      ddl-auto: validate  # Validate schema, no changes in prod
+    show-sql: false       # Disable SQL logging for performance
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: false
+
+  # Flyway Database Migration Configuration
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+# Logging Configuration
+logging:
+  level:
+    org.flywaydb: INFO                           # Less verbose than DEBUG
+    org.springframework.boot.autoconfigure.flyway: INFO
+    com.yourpackage: INFO                        # Your app's package
+    org.springframework: WARN                     # Spring framework
+    org.hibernate: WARN                          # Hibernate
+  file:
+    name: /var/log/accounting-app.log           # Log to file in prod
+    max-size: 10MB
+    max-history: 30
+
+# Application-Specific Configuration
+app:
+  debug: false  # Disable debug mode in prod
