@@ -11,7 +11,7 @@ spring:
 
   # Database Connection Configuration
   datasource:
-    url: jdbc:postgresql://ezbook_dev_user:8lTAmIFaTwrmbLaYfmB4YdPWEEGa2Aqy@dpg-d3orn6u3jp1c739mlv1g-a.oregon-postgres.render.com/ezbook_dev
+    url: jdbc:postgresql://dpg-d3orn6u3jp1c739mlv1g-a.oregon-postgres.render.com/ezbook_dev
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
@@ -43,11 +43,11 @@ logging:
   level:
     org.flywaydb: INFO                           # Less verbose than DEBUG
     org.springframework.boot.autoconfigure.flyway: INFO
-    com.yourpackage: INFO                        # Your app's package
+    com.example.demo: INFO                        # Your app's package
     org.springframework: WARN                     # Spring framework
     org.hibernate: WARN                          # Hibernate
   file:
-    name: /var/log/accounting-app.log           # Log to file in prod
+    name: /home/ubuntu/j/log/accounting-app.log           # Log to file in prod
     max-size: 10MB
     max-history: 30
 
