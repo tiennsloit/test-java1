@@ -5,9 +5,9 @@ server:
 # Database Connection Configuration
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/catalog1
-    username: ${DB_USERNAME:joseph}
-    password: ${DB_PASSWORD:Welkom01}
+    url: jdbc:postgresql://dpg-d46pmoer433s738c8vi0-a.singapore-postgres.render.com/ez_book_local_dev
+    username: ${DB_USERNAME:ez_book_local_dev_user}
+    password: ${DB_PASSWORD:VADRDneRsdnXjTFwAySCiG2NdHvpeWIk}
     driver-class-name: org.postgresql.Driver
 
   # JPA/Hibernate Configuration
